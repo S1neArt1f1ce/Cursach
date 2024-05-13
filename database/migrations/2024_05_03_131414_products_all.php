@@ -17,6 +17,7 @@ return new class extends Migration
             $table->tinyText('name');
             $table->text('smalldesc');
             $table->text('desc');
+            $table->float('price');
             $table->integer('seller-id');
             $table->enum('product-type', ['food', 'tool', 'cleaning']);
             $table->timestamps();

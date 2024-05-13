@@ -13,13 +13,14 @@
                     <div class="small mb-1">This is the product №{{$data -> id}}</div>
                     <h1 class="display-5 fw-bolder">{{$data -> name}}</h1>
                     <div class="fs-5 mb-5">
-                        <span class="text-decoration-line-through">$100.00</span>
-                        <span>$10.00</span>
+                        <span>{{$data -> price}}$</span>
                     </div>
                     <p class="lead">{{$data -> desc}}</p>
                     <div class="d-flex">
-                        <input class="form-control text-center me-3" id="inputQuantity" type="num" value="1"
-                            style="max-width: 3rem" />
+
+                        {{-- quantity input --}}
+                        {{-- <input class="form-control text-center me-3" id="inputQuantity" type="num" value="1"style="max-width: 3rem" /> --}}
+                        
                         <button class="btn btn-outline-dark flex-shrink-0" type="button">
                             <i class="bi-cart-fill me-1"></i>
                             Add to cart

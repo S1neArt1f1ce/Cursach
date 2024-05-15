@@ -67,7 +67,7 @@
                 @endif
                 @if (Auth::check())
                 <a href="#" class="btn btn-outline-light me-2">Profile</a>
-                <a href="#" class="btn btn-warning">logout</a>
+                <a href="{{ route('logout') }}" class="btn btn-warning">logout</a>
                 @endif
 
             </div>

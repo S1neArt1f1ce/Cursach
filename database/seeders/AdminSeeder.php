@@ -1,0 +1,25 @@
+<?php
+
+namespace Database\Seeders;
+
+use Illuminate\Database\Console\Seeds\WithoutModelEvents;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Database\Seeder;
+
+class AdminSeeder extends Seeder
+{
+    /**
+     * Run the database seeds.
+     */
+    public function run(): void
+    {
+        //
+        DB::table('all_users')->insert([
+            'name'      => 'Admin',
+            'email'     => 'cheburbek0102@gmail.com',
+            'password'  => Hash::make('11111111'),
+            'status'    => 'admin'
+        ]);
+    }
+}

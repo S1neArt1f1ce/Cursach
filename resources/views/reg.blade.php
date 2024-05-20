@@ -9,7 +9,8 @@
             <h2>Register</h2>
             <!-- Name input -->
             <div data-mdb-input-init class="form-outline mb-4">
-                <label class="{{$errors->has('name') ? 'border-red-300' : ''}} form-label " for="form2Example1">Username</label>
+                <label class="{{ $errors->has('name') ? 'border-red-300' : '' }} form-label "
+                    for="form2Example1">Username</label>
                 <input type="name" id="name" class="form-control" name="name" placeholder="User Userson" />
                 @error('name')
                     <div class="alert alert-danger">{{ $message }}</div>
@@ -51,7 +52,7 @@
                 <select type="status" id="status" class="form-control" name="status">
                     <option value="buyer">Buyer</option>
                     <option value="seller">Seller</option>
-                    <option value="admin">Admin</option>
+                    {{-- <option value="admin">Admin</option> --}}
                 </select>
                 @error('status')
                     <div class="alert alert-danger">{{ $message }}</div>
@@ -73,10 +74,12 @@
                     <a href="#!">Forgot password?</a>
                 </div> --}}
 
-                <!-- Submit button -->
-                <button type="submit" data-mdb-button-init data-mdb-ripple-init
-                    class="btn btn-primary btn-block mb-4">Register</button>
             </div>
+
+            <!-- Submit button -->
+            <button type="submit" data-mdb-button-init data-mdb-ripple-init
+                class="btn btn-primary btn-block mb-4 w-100">Register</button>
+
         </form>
     </section>
 @endsection

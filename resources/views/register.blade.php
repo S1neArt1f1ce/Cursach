@@ -3,7 +3,7 @@
     <section class="w-1000 p-4 d-flex justify-content-center pb-4">
 
         {{-- <form method="POST" action="{{ route('user.reg') }}" style="width: 22rem;"> --}}
-        <form method="POST" action="{{ route('reg') }}" novalidate style="width: 22rem;">
+        <form method="POST" action="{{ route('register') }}" novalidate style="width: 22rem;">
 
             @csrf
             <h2>Register</h2>

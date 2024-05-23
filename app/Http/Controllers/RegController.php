@@ -10,7 +10,7 @@ class RegController extends Controller
 {
     public function create()
     {
-        return view('/reg');
+        return view('/register');
     }
 
     public function store(Request $request)

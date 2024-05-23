@@ -63,7 +63,7 @@
             <div class="text-end">
                 @if (Auth::guest())
                     <a href="{{ route('login') }}" class="btn btn-outline-light me-2">login</a>
-                    <a href="{{ route('reg') }}" class="btn btn-warning">Sign-up</a>
+                    <a href="{{ route('register') }}" class="btn btn-warning">Sign-up</a>
                 @endif
                 @if (Auth::check())
                 <a href="#" class="btn btn-outline-light me-2">Profile</a>

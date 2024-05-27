@@ -4,8 +4,9 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use app\Models\User;
 
-class LoginController extends Controller
+class UserController extends Controller
 {
     public function create()
     {
@@ -23,6 +24,11 @@ class LoginController extends Controller
         if (Auth::attempt($request->only('email', 'password'))) {
             return redirect('/userstable');
         }
+    }
+
+    public function show(User $user)
+    {
+        return view('/profile');
     }
 
     public function logout(Request $request) {

@@ -47,14 +47,22 @@
     </symbol>
 </svg>
 
-<header class="p-3 bg-dark text-white">
+<header class="p-3 bg-dark text-white mb-4">
     <div class="container">
         <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
             <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
                 <li class=""><a href="/" class="nav-link px-2 text-white">Home</a></li>
                 <li class=""><a href="/market" class="nav-link px-2 text-white">Market</a></li>
                 <li class=""><a href=/# class="nav-link px-2 text-white">Shopping cart</a></li>
-                <li class=""><a href="/userstable" class="nav-link px-2 text-white">Users</a></li>
+
+                @if (Auth::user()?->status == 'seller')
+                    <li class=""><a href=/# class="nav-link px-2 text-white"> Sell product </a></li>
+                @endif
+
+                @if(Auth::user()?->status == 'admin')
+                    <li class=""><a href="/userstable" class="nav-link px-2 text-white">Users</a></li>
+                @endif
+                
             </ul>
             <form class="col-12 col-lg-auto mb-3 mb-lg-0 me-lg-3">
                 <input type="search" class="form-control form-control-dark" placeholder="Search..."
@@ -66,8 +74,8 @@
                     <a href="{{ route('register') }}" class="btn btn-warning">Sign-up</a>
                 @endif
                 @if (Auth::check())
-                <a href="#" class="btn btn-outline-light me-2">Profile</a>
-                <a href="{{ route('logout') }}" class="btn btn-warning">logout</a>
+                    <a href="{{ route('profile') }}" class="btn btn-outline-light me-2">Profile</a>
+                    <a href="{{ route('logout') }}" class="btn btn-warning">logout</a>
                 @endif
 
             </div>

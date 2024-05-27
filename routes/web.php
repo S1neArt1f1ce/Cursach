@@ -5,7 +5,7 @@ use App\Http\Controllers\MarketController;
 use App\Http\Controllers\AllUsersController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\RegController;
-use App\Http\Controllers\LoginController;
+use App\Http\Controllers\UserController;
 use App\Http\Middleware\UserMiddleware;
 use Illuminate\Support\Facades\Route;
 
@@ -36,14 +36,23 @@ Route::get('/product/{i}', [ProductController::class, 'product']);
 Route::get('/register', [RegController::class, 'create'])->name('register')->middleware('guest');
 Route::post('/register', [RegController::class, 'store'])->middleware('guest');
 
-Route::get('/login', [LoginController::class, 'create'])->name('login')->middleware('guest');
-Route::post('/login', [LoginController::class, 'store'])->middleware('guest');
+Route::get('/login', [UserController::class, 'create'])->name('login')->middleware('guest');
+Route::post('/login', [UserController::class, 'store'])->middleware('guest');
 
-Route::get('/logout', [LoginController::class, 'logout'])->name('logout')->middleware('auth');
+Route::middleware(['auth'])->group(function () {
+    Route::get('/profile', [UserController::class, 'show'])->name('profile');
+    Route::get('/logout', [UserController::class, 'logout'])->name('logout');
+});
 
-Route::middleware(['auth', 'UserMiddleware'])->group(function(){
+Route::middleware(['auth', 'admin'])->group(function () {
 
-    
+
     Route::get('/userstable', [AllUsersController::class, 'index'])->name('userstable');
+});
+
+Route::middleware(['auth', 'seller'])->group(function () {
+
+
+    // Route::get('/userstable', [AllUsersController::class, 'index'])->name('userstable');
 
 });

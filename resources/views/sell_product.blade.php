@@ -1,17 +1,12 @@
 @extends('layout.layout')
 @section('content')
     <section class="w-1000 p-4 d-flex justify-content-center pb-4">
-        {{-- Add photo to product form --}}
-        <form action="" method="POST" novalidate style="width: 35rem;">
-        
-        
-            
-        </form>
-        
+
         {{-- Add product form --}}
-        <form action="{{ route('sell_product') }}" method="POST" novalidate style="width: 35rem;">
-            @csrf
+        <form action="{{ route('sell_product') }}" method="POST" novalidate style="width: 35rem;" class = 'm-3' enctype="multipart/form-data">
             <h2>Add product</h2>
+            @csrf
+
             <!-- Name input -->
             <div data-mdb-input-init class="form-outline mb-4">
                 <label class="{{ $errors->has('name') ? 'border-red-300' : '' }} form-label " for="form2Example1">Product
@@ -21,6 +16,18 @@
                     <div class="alert alert-danger">{{ $message }}</div>
                 @enderror
             </div>
+
+
+            <!-- Image input -->
+            <div data-mdb-input-init class="form-outline mb-4">
+                <label class="{{ $errors->has('img') ? 'border-red-300' : '' }} form-label " for="form2Example1">Product
+                    image:</label>
+                <input type="file" id="img" class="form-control" name="img" placeholder="Product image" />
+                @error('img')
+                    <div class="alert alert-danger">{{ $message }}</div>
+                @enderror
+            </div>
+
 
             <!-- Small description input -->
             <div data-mdb-input-init class="form-outline mb-4">

@@ -6,6 +6,7 @@ use App\Product;
 use Illuminate\Support\Facades\Auth;
 use App\Models\Product as ModelsProduct;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class ProductController extends Controller
 {
@@ -36,12 +37,27 @@ class ProductController extends Controller
             'smalldesc' => $data->smalldesc,
             'desc' => $data->desc,
             'price' => $data->price,
-            'seller_id' => Auth::user() -> id,
+            'seller_id' => Auth::user()->id,
             'product_type' => $data->product_type,
         ]);
 
-        $product->save();
+        $gallery = $data->name . Auth::user()->id;
+        $path = public_path() . 'img/prods/' . $gallery;
+        Storage::makeDirectory($path);
 
+        $data->file('img')->storeAs('img/prods/' . $gallery, $data->name . Auth::user()->id . '.jpg','public');
+
+        $product->save();
         return redirect('/market');
     }
+
+    // public function add_prod_image()
+    // {
+    //     return view('add_prod_image');
+    // }
+
+    // public function store_prod_image(Request $img)
+    // {
+    //     dd($img->all());
+    // }
 }

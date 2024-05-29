@@ -55,4 +55,7 @@ Route::middleware(['auth', 'seller'])->group(function () {
     Route::get('/sell_product', [ProductController::class, 'sell_product'])->name('sell_product');
     Route::post('/sell_product', [ProductController::class, 'store_product']);
 
+    // Route::get('/add_prod_image', [ProductController::class, 'add_prod_image'])->name('add_prod_image');
+    // Route::post('/store_prod_image', [ProductController::class, 'store_prod_image']);
+
 });

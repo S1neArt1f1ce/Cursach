@@ -56,7 +56,7 @@
                 <li class=""><a href=/# class="nav-link px-2 text-white">Shopping cart</a></li>
 
                 @if (Auth::user()?->status == 'seller')
-                    <li class=""><a href=/# class="nav-link px-2 text-white"> Sell product </a></li>
+                    <li class=""><a href=/sell_product class="nav-link px-2 text-white"> Sell product </a></li>
                 @endif
 
                 @if(Auth::user()?->status == 'admin')

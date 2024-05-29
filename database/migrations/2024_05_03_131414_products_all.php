@@ -18,8 +18,8 @@ return new class extends Migration
             $table->text('smalldesc');
             $table->text('desc');
             $table->float('price');
-            $table->integer('seller-id');
-            $table->enum('product-type', ['food', 'tool', 'cleaning']);
+            $table->integer('seller_id');
+            $table->enum('product_type', ['food', 'tool', 'cleaning']);
             $table->timestamps();
         });
     }

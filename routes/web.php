@@ -52,7 +52,7 @@ Route::middleware(['auth', 'admin'])->group(function () {
 
 Route::middleware(['auth', 'seller'])->group(function () {
 
-
-    // Route::get('/userstable', [AllUsersController::class, 'index'])->name('userstable');
+    Route::get('/sell_product', [ProductController::class, 'sell_product'])->name('sell_product');
+    Route::post('/sell_product', [ProductController::class, 'store_product']);
 
 });

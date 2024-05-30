@@ -50,14 +50,4 @@ class ProductController extends Controller
         $product->save();
         return redirect('/market');
     }
-
-    // public function add_prod_image()
-    // {
-    //     return view('add_prod_image');
-    // }
-
-    // public function store_prod_image(Request $img)
-    // {
-    //     dd($img->all());
-    // }
 }

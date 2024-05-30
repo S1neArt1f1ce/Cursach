@@ -9,5 +9,5 @@ class AllUsers extends Model
 {
     use HasFactory;
     
-    // protected $table = 'all_users'
+    protected $table = 'all_users';
 }

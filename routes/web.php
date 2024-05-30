@@ -40,22 +40,27 @@ Route::get('/login', [UserController::class, 'create'])->name('login')->middlewa
 Route::post('/login', [UserController::class, 'store'])->middleware('guest');
 
 Route::middleware(['auth'])->group(function () {
+
     Route::get('/profile', [UserController::class, 'show'])->name('profile');
     Route::get('/logout', [UserController::class, 'logout'])->name('logout');
+
+    Route::get('/editprofile', [UserController::class, 'edit'])->name('editprofile');
+    Route::post('/editprofile', [UserController::class, 'savedit']);
+
 });
 
 Route::middleware(['auth', 'admin'])->group(function () {
 
-
     Route::get('/userstable', [AllUsersController::class, 'index'])->name('userstable');
+    Route::get('/deleteuser/{id}', [AllUsersController::class, 'delete_user'])->name('delete_user');
+
+    Route::get('/adduser', [AllUsersController::class, 'add_user'])->name('add_user');
+
 });
 
 Route::middleware(['auth', 'seller'])->group(function () {
 
     Route::get('/sell_product', [ProductController::class, 'sell_product'])->name('sell_product');
     Route::post('/sell_product', [ProductController::class, 'store_product']);
-
-    // Route::get('/add_prod_image', [ProductController::class, 'add_prod_image'])->name('add_prod_image');
-    // Route::post('/store_prod_image', [ProductController::class, 'store_prod_image']);
 
 });

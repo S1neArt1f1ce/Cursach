@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-
+use Illuminate\Support\Facades\Storage;
 class RegController extends Controller
 {
     public function create()
@@ -29,8 +29,11 @@ class RegController extends Controller
             'status' => $request->status
         ]);
 
+        $path = 'public/img/users/' . $request->email;
+        Storage::makeDirectory($path);
+
         Auth::login($user);
 
-        return redirect('/userstable');
+        return redirect('/market');
     }
 }

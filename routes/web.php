@@ -29,8 +29,6 @@ Route::view('/', 'welcome');
 
 Route::get('/market', [MarketController::class, 'market'])->name('market');
 
-// Route::get('/userstable', [AllUsersController::class, 'index'])->middleware('auth');
-
 Route::get('/product/{i}', [ProductController::class, 'product']);
 
 Route::get('/register', [RegController::class, 'create'])->name('register')->middleware('guest');

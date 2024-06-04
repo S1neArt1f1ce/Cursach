@@ -60,5 +60,8 @@ Route::middleware(['auth', 'seller'])->group(function () {
 
     Route::get('/sell_product', [ProductController::class, 'sell_product'])->name('sell_product');
     Route::post('/sell_product', [ProductController::class, 'store_product']);
+    
+    Route::get('/editproduct/{id}', [ProductController::class, 'edit'])->name('editproduct');
+    Route::post('/editproduct/{id}', [ProductController::class, 'saveedit']);
 
 });

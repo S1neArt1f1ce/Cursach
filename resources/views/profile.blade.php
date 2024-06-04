@@ -8,7 +8,7 @@
                         <div class="card-body">
                             <div class="d-flex flex-column align-items-center text-center">
                                 <img src={{ asset('/storage/img/users/' . Auth::user()->email . '/' . Auth::user()->email. '.jpg') }}
-                                    class="rounded-circle" width="150">
+                                    class="rounded-circle" width="150" pla>
                                 <div class="mt-3">
                                     <h4>{{ Auth::user()->name }}</h4>
                                 </div>
@@ -56,7 +56,23 @@
                     </div>
                 </div>
             </div>
-
+            <div class='row'>
+                <h2>Added Products</h2>
+                <div class="d-flex flex-row flex-wrap p-2 justify-content-around">
+                    @foreach ($product as $products)
+                        <div class="card m-2 p-2" style="width: 23%;">
+                            <img class="card-img-top"
+                                src='{{ asset('/storage/img/prods/' . $products->name . $products->seller_id . '/' . $products->name . $products->seller_id . '.jpg') }}'
+                                alt="Card image cap">
+                            <div class="card-body">
+                                <h5 class="card-title">{{ $products->name }}</h5>
+                                <p class="card-text">{{ $products->smalldesc }}</p>
+                                <a href="/product/{{ $products->id }}" class="btn btn-primary">Product page</a>
+                            </div>
+                        </div>
+                    @endforeach
+                </div>
+            </div>
         </div>
     </div>
 @endsection

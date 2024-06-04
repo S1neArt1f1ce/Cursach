@@ -24,7 +24,7 @@
             <div class="col-md-9  ">
                 <h2>Products</h2>
                 <div class="d-flex flex-row flex-wrap p-2 justify-content-around">
-                    @foreach ($products as $products)
+                    @forelse ($products as $products)
                         <div class="card m-2 p-2" style="width: 23%;">
                             <img class="card-img-top"
                                 src='{{ asset('/storage/img/prods/' . $products->name . $products->seller_id . '/' . $products->name . $products->seller_id . '.jpg') }}'
@@ -35,7 +35,9 @@
                                 <a href="/product/{{ $products->id }}" class="btn btn-primary">Product page</a>
                             </div>
                         </div>
-                    @endforeach
+                    @empty
+                        <h2>No products available</h2>
+                    @endforelse
                 </div>
             </div>
         </div>

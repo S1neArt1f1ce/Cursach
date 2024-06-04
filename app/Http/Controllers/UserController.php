@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use app\Models\User;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\File;
 
@@ -31,7 +32,8 @@ class UserController extends Controller
 
     public function show(User $user)
     {
-        return view('/profile');
+        $product = DB::table('products_all')->where('seller_id', Auth::user()->id)->get();
+        return view('/profile', compact('product'));
     }
 
     public function logout()
@@ -47,8 +49,6 @@ class UserController extends Controller
 
     public function savedit(Request $newdata)
     {
-        // dd($newdata->all());
-
         $filename = '';
 
         if ($newdata->hasFile('img')) {
@@ -56,15 +56,12 @@ class UserController extends Controller
 
             $newdata->img->move(public_path('/storage/img/users/' . Auth::user()->email), $filename);
         }
+        
         $user = User::find(Auth::user()->id);
 
         if (isset($newdata->name)) {
             $user->name = $newdata->name;
         };
-
-        // if (isset($newdata->email)) {
-        //     $user->email = $newdata->email;
-        // };
 
         $user->save();
         return redirect()->route('profile');

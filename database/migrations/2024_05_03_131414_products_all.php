@@ -12,13 +12,15 @@ return new class extends Migration
     public function up(): void
     {
         //
+        Schema::dropIfExists('products_all');
         Schema::create('products_all', function (Blueprint $table) {
             $table->id()->primary();
             $table->tinyText('name');
             $table->text('smalldesc');
             $table->text('desc');
             $table->float('price');
-            $table->integer('seller_id');
+            $table->bigInteger('seller_id')->unsigned();
+            $table->foreign('seller_id')->references('id')->on('all_users');
             $table->enum('product_type', ['food', 'tool', 'cleaning']);
             $table->timestamps();
         });

@@ -45,9 +45,52 @@ class ProductController extends Controller
         $path = public_path() . 'img/prods/' . $gallery;
         Storage::makeDirectory($path);
 
-        $data->file('img')->storeAs('img/prods/' . $gallery, $data->name . Auth::user()->id . '.jpg','public');
+        $data->file('img')->storeAs('img/prods/' . $gallery, $data->name . Auth::user()->id . '.jpg', 'public');
 
         $product->save();
         return redirect('/market');
+    }
+
+    public function edit(int $id)
+    {
+        $product = ModelsProduct::find($id);
+        return view('/editproduct', ['product' => $product]);
+    }
+
+    public function saveedit(Request $newdata, $id)
+    {
+        $product = ModelsProduct::find($id);
+
+        $filename = '';
+
+        if (isset($newdata->name)) {
+            $product->name = $newdata->name;
+            Storage::move();
+        }
+
+        if ($newdata->hasFile('img')) {
+            $filename = $newdata->getSchemeAndHttpHost() . '/storage/img/prods/' . $newdata->name . $newdata->seller_id . '.' . $newdata->img->extension();
+
+            $newdata->img->move(public_path('/storage/img/prods/' . $newdata->name, $newdata->seller_id), $filename);
+        }
+
+        if (isset($newdata->smalldesc)) {
+            $product->smalldesc = $newdata->smalldesc;
+        }
+
+        if (isset($newdata->desc)) {
+            $product->desc = $newdata->desc;
+        }
+
+        if (isset($newdata->price)) {
+            $product->price = $newdata->price;
+        }
+
+        if (isset($newdata->product_type)) {
+            $product->product_type = $newdata->product_type;
+        }
+
+        $product->save();
+        return redirect()->route('profile');
     }
 }

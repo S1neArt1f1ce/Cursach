@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Market;
 use App\Product;
+use Illuminate\support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
 use App\Models\Product as ModelsProduct;
 use Illuminate\Http\Request;
@@ -51,10 +53,28 @@ class ProductController extends Controller
         return redirect('/market');
     }
 
+    public function delete_product(int $id)
+    {
+        $product = ModelsProduct::find($id);
+        if (Auth::user()->id == $product->seller_id) {
+            $gallery = $product->name . Auth::user()->id;
+            Storage::deleteDirectory('public/img/prods/' . $gallery);
+            DB::table('products_all')->where('id', $id)->delete();
+            return redirect()->route('market');
+        } else {
+            return redirect()->route('market');
+        }
+    }
+
     public function edit(int $id)
     {
         $product = ModelsProduct::find($id);
-        return view('/editproduct', ['product' => $product]);
+
+        if (Auth::user()->id == $product->seller_id) {
+            return view('/editproduct', ['product' => $product]);
+        } else {
+            return redirect()->route('market');
+        }
     }
 
     public function saveedit(Request $newdata, $id)
@@ -90,7 +110,11 @@ class ProductController extends Controller
             $product->product_type = $newdata->product_type;
         }
 
-        $product->save();
-        return redirect()->route('profile');
+        if (Auth::user()->id == $product->seller_id) {
+            $product->save();
+            return redirect()->route('profile');
+        } else {
+            return redirect()->route('market');
+        }
     }
 }

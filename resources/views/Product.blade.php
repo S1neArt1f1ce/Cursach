@@ -28,6 +28,7 @@
 
                         @if (Auth::user()->id == $data->seller_id)
                             <a href="/editproduct/{{ $data->id }}" class="btn btn-outline-dark flex-shrink-0 m-1">Edit product</a>
+                            <a href="/delete_product/{{ $data->id }}" class="btn btn-outline-dark flex-shrink-0 m-1">Delete product</a>
                         @endif
                     </div>
                 </div>

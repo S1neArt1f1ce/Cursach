@@ -21,7 +21,7 @@
                         {{-- quantity input --}}
                         {{-- <input class="form-control text-center me-3" id="inputQuantity" type="num" value="1"style="max-width: 3rem" /> --}}
 
-                        <a class="btn btn-outline-dark flex-shrink-0 m-1" href="/cart/add/{{ $data->id }}">
+                        <a class="btn btn-primary flex-shrink-0 m-1" href="/cart/add/{{ $data->id }}">
                             <i class="bi-cart-fill me-1"></i>
                             Add to cart
                         </a>

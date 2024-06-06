@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+<html lang="en">
 
 <head>
     <meta charset="UTF-8">
@@ -8,10 +9,42 @@
         integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
     <link href="/docs/5.1/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
-    <title>MultiverseMarket</title>
+    <title>Cosmos Shop</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
 </head>
 
 <style>
+    body {
+        background-color: #1a1a1a;
+        color: #f8f9fa;
+    }
+
+    .navbar,
+    .footer {
+        background-color: #0d0d0d;
+    }
+
+    .banner {
+        background: url('https://img.freepik.com/free-photo/night-sky-glows-with-iridescent-deep-space-generative-ai_188544-11285.jpg?w=1380&t=st=1717696755~exp=1717697355~hmac=114adfd878778b99e2683d56b54705823314e13f3dfbac0ede388b8b98230525') no-repeat center center;
+        background-size: cover;
+        height: 400px;
+        color: white;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+    }
+
+    .product-card {
+        background-color: #262626;
+        border: none;
+    }
+
+    .product-card img {
+        height: 200px;
+        object-fit: cover;
+    }
+
     .my-custom-table {
         background-color: yellowgreen;
         height: auto;
@@ -47,37 +80,56 @@
     </symbol>
 </svg>
 
-<header class="p-3 bg-dark text-white mb-4">
-    <div class="container">
-        <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
-            <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
-                <li class=""><a href="/" class="nav-link px-2 text-white">Home</a></li>
-                <li class=""><a href="/market" class="nav-link px-2 text-white">Market</a></li>
-                <li class=""><a href=/cart class="nav-link px-2 text-white">Shopping cart</a></li>
+<header class="mb-5">
+
+    <nav class="navbar navbar-expand-lg navbar-dark">
+        <a class="navbar-brand" href="/">Cosmos Shop</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+            aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item active">
+                    <a class="nav-link" href="/">Home <span class="sr-only">(current)</span></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/market">Products</a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" href="/cart">Cart</a>
+                </li>
 
                 @if (Auth::user()?->status == 'seller')
-                    <li class=""><a href=/sell_product class="nav-link px-2 text-white"> Sell product </a></li>
+                    <li class="nav-item"><a href=/sell_product class="nav-link"> Sell product </a>
+                    </li>
                 @endif
 
-                @if(Auth::user()?->status == 'admin')
-                    <li class=""><a href="/userstable" class="nav-link px-2 text-white">Users</a></li>
+                @if (Auth::user()?->status == 'admin')
+                    <li class="nav-item"><a href="/userstable" class="nav-link">Users</a></li>
                 @endif
-                
-            </ul>
-            
-            <div class="text-end">
                 @if (Auth::guest())
-                    <a href="{{ route('login') }}" class="btn btn-outline-light me-2">login</a>
-                    <a href="{{ route('register') }}" class="btn btn-warning">Sign-up</a>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ route('login') }}">login</a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="btn btn-primary nav-link" href="{{ route('register') }}">Sign-up</a>
+                    </li>
                 @endif
                 @if (Auth::check())
-                    <a href="{{ route('profile') }}" class="btn btn-outline-light me-2">Profile</a>
-                    <a href="{{ route('logout') }}" class="btn btn-warning">logout</a>
-                @endif
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ route('profile') }}">Profile</a>
+                    </li>
 
-            </div>
+                    <li class="nav-item">
+                        <a class="btn btn-primary nav-link" href="{{ route('logout') }}">logout</a>
+                    </li>
+                @endif
+            </ul>
         </div>
-    </div>
+    </nav>
 </header>
 
 <body>
@@ -86,30 +138,18 @@
 
 </body>
 
-<div class="container">
-    <footer class="d-flex flex-wrap justify-content-between align-items-center py-3 my-4 border-top">
-        <div class="col-md-4 d-flex align-items-center">
-            <span class="text-muted">© 2024 Иван Писарев</span>
-        </div>
 
-        <ul class="nav col-md-4 justify-content-end list-unstyled d-flex">
-            <li class="ms-3"><a class="text-muted" href="#"><svg class="bi" width="24" height="24">
-                        <use xlink:href="#twitter"></use>
-                    </svg></a></li>
-            <li class="ms-3"><a class="text-muted" href="#"><svg class="bi" width="24" height="24">
-                        <use xlink:href="#instagram"></use>
-                    </svg></a></li>
-            <li class="ms-3"><a class="text-muted" href="#"><svg class="bi" width="24" height="24">
-                        <use xlink:href="#facebook"></use>
-                    </svg></a></li>
-        </ul>
-    </footer>
-</div>
-
+<footer class="footer mt-5 py-3 text-Example Domain example.com center">
+    <div class="container">
+        <span class="text-muted">&copy; 2024 Cosmos Shop. All Rights Reserved.</span>
+    </div>
+</footer>
 </html>
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
     integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous">
 </script>
-
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 {{-- @stack('scripts') --}}

@@ -7,8 +7,13 @@
                     <div class="card">
                         <div class="card-body">
                             <div class="d-flex flex-column align-items-center text-center">
-                                <img src={{ asset('/storage/img/users/' . Auth::user()->email . '/' . Auth::user()->email. '.jpg') }}
-                                    class="rounded-circle" width="150">
+                                @if (file_exists('/storage/img/users/' . Auth::user()->email . '/' . Auth::user()->email . '.jpg'))
+                                    <img src={{ asset('/storage/img/users/' . Auth::user()->email . '/' . Auth::user()->email . '.jpg') }}
+                                        class="rounded-circle" width="150" pla>
+                                @else
+                                    <img src="https://upload.wikimedia.org/wikipedia/commons/a/ac/Default_pfp.jpg"
+                                        class="rounded-circle" width="150" pla>
+                                @endif
 
                                 <div class="mt-3">
                                     <h4>{{ Auth::user()->name }}</h4>
@@ -20,7 +25,8 @@
                 <div class="col-md-8">
                     <div class="card mb-3">
 
-                        <form method="POST" action="{{route('editprofile')}}" style="" enctype="multipart/form-data">
+                        <form method="POST" action="{{ route('editprofile') }}" style=""
+                            enctype="multipart/form-data">
 
                             @csrf
                             <div class="card-body">

@@ -46,6 +46,13 @@ Route::middleware(['auth'])->group(function () {
 
     Route::get('/editprofile', [UserController::class, 'edit'])->name('editprofile');
     Route::post('/editprofile', [UserController::class, 'savedit']);
+
+    Route::get('cart', [CartController::class, 'index'])->name('cart.index');
+    Route::get('cart/add/{id}', [CartController::class, 'add'])->name('cart.add');
+    Route::post('cart/update/{id}', [CartController::class, 'update'])->name('cart.update');
+    Route::get('cart/remove/{id}', [CartController::class, 'remove'])->name('cart.remove');
+    
+    Route::get('order', [OrderController::class, 'store'])->name('order.store');
 });
 
 Route::middleware(['auth', 'admin'])->group(function () {
@@ -66,9 +73,3 @@ Route::middleware(['auth', 'seller'])->group(function () {
     Route::get('/editproduct/{id}', [ProductController::class, 'edit'])->name('editproduct');
     Route::post('/editproduct/{id}', [ProductController::class, 'saveedit']);
 });
-
-Route::get('cart', [CartController::class, 'index'])->name('cart.index');
-Route::get('cart/add/{id}', [CartController::class, 'add'])->name('cart.add');
-Route::post('cart/update/{id}', [CartController::class, 'update'])->name('cart.update');
-Route::get('cart/remove/{id}', [CartController::class, 'remove'])->name('cart.remove');
-Route::get('order', [OrderController::class, 'store'])->name('order.store');

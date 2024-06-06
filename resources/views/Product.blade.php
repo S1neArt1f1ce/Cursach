@@ -21,14 +21,16 @@
                         {{-- quantity input --}}
                         {{-- <input class="form-control text-center me-3" id="inputQuantity" type="num" value="1"style="max-width: 3rem" /> --}}
 
-                        <button class="btn btn-outline-dark flex-shrink-0 m-1" type="button">
+                        <a class="btn btn-outline-dark flex-shrink-0 m-1" href="/cart/add/{{ $data->id }}">
                             <i class="bi-cart-fill me-1"></i>
                             Add to cart
-                        </button>
+                        </a>
 
-                        @if (Auth::user()->id == $data->seller_id)
-                            <a href="/editproduct/{{ $data->id }}" class="btn btn-outline-dark flex-shrink-0 m-1">Edit product</a>
-                            <a href="/delete_product/{{ $data->id }}" class="btn btn-outline-dark flex-shrink-0 m-1">Delete product</a>
+                        @if (Auth::user()?->id == $data->seller_id)
+                            <a href="/editproduct/{{ $data->id }}" class="btn btn-outline-dark flex-shrink-0 m-1">Edit
+                                product</a>
+                            <a href="/delete_product/{{ $data->id }}"
+                                class="btn btn-outline-dark flex-shrink-0 m-1">Delete product</a>
                         @endif
                     </div>
                 </div>

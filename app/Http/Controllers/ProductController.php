@@ -56,7 +56,7 @@ class ProductController extends Controller
     public function delete_product(int $id)
     {
         $product = ModelsProduct::find($id);
-        if (Auth::user()->id == $product->seller_id) {
+        if (Auth::user()->id == $product->seller_id or Auth::user()->status == 'admin'){
             $gallery = $product->name . Auth::user()->id;
             Storage::deleteDirectory('public/img/prods/' . $gallery);
             DB::table('products_all')->where('id', $id)->delete();
@@ -70,7 +70,7 @@ class ProductController extends Controller
     {
         $product = ModelsProduct::find($id);
 
-        if (Auth::user()->id == $product->seller_id) {
+        if (Auth::user()->id == $product->seller_id or Auth::user()->status == 'admin') {
             return view('/editproduct', ['product' => $product]);
         } else {
             return redirect()->route('market');
@@ -110,7 +110,7 @@ class ProductController extends Controller
             $product->product_type = $newdata->product_type;
         }
 
-        if (Auth::user()->id == $product->seller_id) {
+        if (Auth::user()->id == $product->seller_id or Auth::user()->status == 'admin') {
             $product->save();
             return redirect()->route('profile');
         } else {

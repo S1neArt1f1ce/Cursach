@@ -25,7 +25,7 @@
     }
 
     .banner {
-        background: url('https://img.freepik.com/free-photo/night-sky-glows-with-iridescent-deep-space-generative-ai_188544-11285.jpg?w=1380&t=st=1717696755~exp=1717697355~hmac=114adfd878778b99e2683d56b54705823314e13f3dfbac0ede388b8b98230525') no-repeat center center;
+        background: url({{ asset('/storage/img/spaceBG.jpg') }}) no-repeat center center;
         background-size: cover;
         height: 400px;
         color: white;
@@ -144,6 +144,7 @@
         <span class="text-muted">&copy; 2024 Cosmos Shop. All Rights Reserved.</span>
     </div>
 </footer>
+
 </html>
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"

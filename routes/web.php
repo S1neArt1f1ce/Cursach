@@ -40,7 +40,7 @@ Route::post('/register', [RegController::class, 'store'])->middleware('guest');
 Route::get('/login', [UserController::class, 'create'])->name('login')->middleware('guest');
 Route::post('/login', [UserController::class, 'store'])->middleware('guest');
 
-Route::middleware(['auth', 'verify' => true])->group(function () {
+Route::middleware(['auth'])->group(function () {
 
     Route::get('/profile', [UserController::class, 'show'])->name('profile');
     Route::get('/logout', [UserController::class, 'logout'])->name('logout');
@@ -64,7 +64,7 @@ Route::middleware(['auth', 'admin'])->group(function () {
     Route::get('/adduser', [AllUsersController::class, 'add_user'])->name('add_user');
 });
 
-Route::middleware(['auth', 'seller', 'verify' => true])->group(function () {
+Route::middleware(['auth', 'seller'])->group(function () {
 
     Route::get('/sell_product', [ProductController::class, 'sell_product'])->name('sell_product');
     Route::post('/sell_product', [ProductController::class, 'store_product']);

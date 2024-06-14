@@ -11,7 +11,7 @@ use Illuminate\Notifications\Notifiable;
 
 class User extends Authenticatable
 {
-    use HasFactory, Notifiable, MustVerifyEmail;
+    use HasFactory, Notifiable;
 
     protected $table = 'all_users';
 

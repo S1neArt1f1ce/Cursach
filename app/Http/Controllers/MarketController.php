@@ -23,7 +23,14 @@ class MarketController extends Controller
         $product_type = Product::all();
 
         $data = ModelsMarket::all();
+        // return view('market', ['data' => $data]);
         return view('market', compact('products', 'product_type'));
 
     }
+
+    // public function (Request $request)
+    // {
+    //     $data = $request->validated();
+    //     dd($data);
+    // }
 }

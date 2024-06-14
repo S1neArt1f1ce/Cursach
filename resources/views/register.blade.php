@@ -59,7 +59,7 @@
                 @enderror
             </div>
 
-            <!-- 2 column grid layout for inline styling -->
+            {{-- <!-- 2 column grid layout for inline styling -->
             <div class="row mb-4">
                 <div class="col d-flex justify-content-center">
                     <!-- Checkbox -->
@@ -67,7 +67,7 @@
                         <input class="form-check-input" type="checkbox" value="" id="form2Example31" checked />
                         <label class="form-check-label" for="form2Example31"> Remember me </label>
                     </div>
-                </div>
+                </div> --}}
 
             </div>
 

@@ -27,7 +27,7 @@
     .banner {
         background: url({{ asset('/storage/img/spaceBG.jpg') }}) no-repeat center center;
         background-size: cover;
-        height: 400px;
+        height: 500px;
         color: white;
         display: flex;
         align-items: center;
@@ -80,70 +80,74 @@
     </symbol>
 </svg>
 
-<header class="mb-5">
 
-    <nav class="navbar navbar-expand-lg navbar-dark">
-        <a class="navbar-brand" href="/">Cosmos Shop</a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
-            aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarNav">
-            <ul class="navbar-nav ml-auto">
-                <li class="nav-item active">
-                    <a class="nav-link" href="/">Home <span class="sr-only">(current)</span></a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="/market">Products</a>
-                </li>
-
-                <li class="nav-item">
-                    <a class="nav-link" href="/cart">Cart</a>
-                </li>
-
-                @if (Auth::user()?->status == 'seller')
-                    <li class="nav-item"><a href=/sell_product class="nav-link"> Sell product </a>
-                    </li>
-                @endif
-
-                @if (Auth::user()?->status == 'admin')
-                    <li class="nav-item"><a href="/userstable" class="nav-link">Users</a></li>
-                @endif
-                @if (Auth::guest())
-                    <li class="nav-item">
-                        <a class="nav-link" href="{{ route('login') }}">login</a>
-                    </li>
-
-                    <li class="nav-item">
-                        <a class="btn btn-primary nav-link" href="{{ route('register') }}">Sign-up</a>
-                    </li>
-                @endif
-                @if (Auth::check())
-                    <li class="nav-item">
-                        <a class="nav-link" href="{{ route('profile') }}">Profile</a>
-                    </li>
-
-                    <li class="nav-item">
-                        <a class="btn btn-primary nav-link" href="{{ route('logout') }}">logout</a>
-                    </li>
-                @endif
-            </ul>
-        </div>
-    </nav>
-</header>
 
 <body>
 
+    <header class="mb-5">
+
+        <nav class="navbar navbar-expand-lg navbar-dark">
+            <a class="navbar-brand" href="/">Cosmos Shop</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item active">
+                        <a class="nav-link" href="/">Home <span class="sr-only">(current)</span></a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/market">Products</a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="/cart">Cart</a>
+                    </li>
+
+                    @if (Auth::user()?->status == 'seller')
+                        <li class="nav-item"><a href=/sell_product class="nav-link"> Sell product </a>
+                        </li>
+                    @endif
+
+                    @if (Auth::user()?->status == 'admin')
+                        <li class="nav-item"><a href="/userstable" class="nav-link">Users</a></li>
+                    @endif
+                    @if (Auth::guest())
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ route('login') }}">login</a>
+                        </li>
+
+                        <li class="nav-item">
+                            <a class="btn btn-primary nav-link" href="{{ route('register') }}">Sign-up</a>
+                        </li>
+                    @endif
+                    @if (Auth::check())
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ route('profile') }}">Profile</a>
+                        </li>
+
+                        <li class="nav-item">
+                            <a class="btn btn-primary nav-link" href="{{ route('logout') }}">logout</a>
+                        </li>
+                    @endif
+                </ul>
+            </div>
+        </nav>
+    </header>
+
     @yield('content')
+
+    <footer class="footer mt-5 py-3 text-Example Domain example.com center">
+        <div class="container">
+            <span class="text-muted">&copy; 2024 Cosmos Shop. All Rights Reserved.</span>
+        </div>
+    </footer>
 
 </body>
 
 
-<footer class="footer mt-5 py-3 text-Example Domain example.com center">
-    <div class="container">
-        <span class="text-muted">&copy; 2024 Cosmos Shop. All Rights Reserved.</span>
-    </div>
-</footer>
+
 
 </html>
 

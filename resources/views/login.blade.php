@@ -30,6 +30,11 @@
 
             <!-- Register buttons -->
             <div class="text-center">
+                <p>Forgot your password? <a href="{{ route('password.forgot') }}">Reset</a></p>
+            </div>
+
+            <!-- Register buttons -->
+            <div class="text-center">
                 <p>Not a member? <a href="/register">Register</a></p>
             </div>
         </form>

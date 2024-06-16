@@ -1,39 +1,48 @@
-<x-guest-layout>
-    <form method="POST" action="{{ route('password.store') }}">
-        @csrf
+@extends('layout.layout')
+@section('content')
+    <div class="container">
+        <section class="w-400 p-4 d-flex justify-content-center pb-4">
+            
+            <form method="POST" action="{{ route('password.store') }}" style="width: 22rem;">
+                @csrf
 
-        <!-- Password Reset Token -->
-        <input type="hidden" name="token" value="{{ $request->route('token') }}">
+                <!-- Password Reset Token -->
+                <input type="hidden" name="token" value="{{ $request->route('token') }}">
 
-        <!-- Email Address -->
-        <div>
-            <x-input-label for="email" :value="__('Email')" />
-            <x-text-input id="email" class="block mt-1 w-full" type="email" name="email" :value="old('email', $request->email)" required autofocus autocomplete="username" />
-            <x-input-error :messages="$errors->get('email')" class="mt-2" />
-        </div>
+                <!-- Email Address -->
+                <div data-mdb-input-init class="form-outline mb-4">
+                    <label class="form-label" for="form2Example1">Email address</label>
+                    <input id="email" class="form-control" type="email" name="email"
+                        :value="old('email', $request - > email)" required autofocus autocomplete="username"
+                        placeholder="email" />
+                    <error :messages="$errors - > get('email')" class="mt-2" />
+                </div>
 
-        <!-- Password -->
-        <div class="mt-4">
-            <x-input-label for="password" :value="__('Password')" />
-            <x-text-input id="password" class="block mt-1 w-full" type="password" name="password" required autocomplete="new-password" />
-            <x-input-error :messages="$errors->get('password')" class="mt-2" />
-        </div>
+                <!-- Password -->
+                <div class="mt-4">
+                    <label class="form-label" for="form2Example2">Password</label>
+                    <input id="password" class="form-control" type="password" name="password" required
+                        autocomplete="new-password" />
+                    <error :messages="$errors - > get('password')" class="mt-2" />
+                </div>
 
-        <!-- Confirm Password -->
-        <div class="mt-4">
-            <x-input-label for="password_confirmation" :value="__('Confirm Password')" />
+                <!-- Confirm Password -->
+                <div class="mt-4">
+                    <label class="form-label" for="form2Example2">Confirm password</label>
 
-            <x-text-input id="password_confirmation" class="block mt-1 w-full"
-                                type="password"
-                                name="password_confirmation" required autocomplete="new-password" />
+                    <input id="password_confirmation" class="form-control" type="password" name="password_confirmation"
+                        required autocomplete="new-password" />
 
-            <x-input-error :messages="$errors->get('password_confirmation')" class="mt-2" />
-        </div>
+                    <error :messages="$errors - > get('password_confirmation')" class="mt-2" />
+                </div>
 
-        <div class="flex items-center justify-end mt-4">
-            <x-primary-button>
-                {{ __('Reset Password') }}
-            </x-primary-button>
-        </div>
-    </form>
-</x-guest-layout>
+                <div class="flex items-center justify-end mt-4">
+                    <button type="submit" data-mdb-button-init data-mdb-ripple-init
+                        class="btn btn-primary btn-block mb-4 w-100">
+                        {{ __('Reset Password') }}
+                    </button>
+                </div>
+            </form>
+        </section>
+    </div>
+@endsection

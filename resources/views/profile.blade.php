@@ -39,8 +39,16 @@
                                 <div class="col-sm-3">
                                     <h6 class="mb-0">Email</h6>
                                 </div>
-                                <div class="col-sm-9 text-secondary">
+                                <div class="col-sm-5 text-secondary">
                                     {{ Auth::user()->email }}
+                                </div>
+                                <div class="col-sm-3 text-secondary">
+                                    @if (Auth::user()->email_verified_at)
+                                        <p class="text-success">{{ __('Email is verified.') }}</p>
+                                    @else
+                                        <p class="text-danger">{{ __('Email is not verified.') }}</p>
+                                        <a href="{{ route('verification.notice') }}">Varify email</a>
+                                    @endif
                                 </div>
                             </div>
                             <hr>

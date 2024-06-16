@@ -46,6 +46,7 @@
     }
 
     .my-custom-table {
+        color: black;
         background-color: yellowgreen;
         height: auto;
     }

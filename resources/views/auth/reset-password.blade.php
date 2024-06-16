@@ -2,7 +2,7 @@
 @section('content')
     <div class="container">
         <section class="w-400 p-4 d-flex justify-content-center pb-4">
-            
+
             <form method="POST" action="{{ route('password.store') }}" style="width: 22rem;">
                 @csrf
 
@@ -13,8 +13,8 @@
                 <div data-mdb-input-init class="form-outline mb-4">
                     <label class="form-label" for="form2Example1">Email address</label>
                     <input id="email" class="form-control" type="email" name="email"
-                        :value="old('email', $request - > email)" required autofocus autocomplete="username"
-                        placeholder="email" />
+                        value=" {{ old('email', $request->email) }}" required autofocus autocomplete="username"
+                        readonly />
                     <error :messages="$errors - > get('email')" class="mt-2" />
                 </div>
 

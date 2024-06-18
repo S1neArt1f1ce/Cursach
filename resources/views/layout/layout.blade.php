@@ -55,6 +55,28 @@
         vertical-align: -.125em;
         fill: currentColor;
     }
+
+    .w-23 {
+        width: 23%;
+    }
+
+    @media (width < 1000px) {
+        .w-lg-40 {
+            width: 40%;
+        }
+    }
+
+    @media (width <=800px) {
+        .w-md-40 {
+            width: 40%;
+        }
+    }
+
+    @media (max-width: 576px) {
+        .w-sm-70 {
+            width: 70%;
+        }
+    }
 </style>
 
 <svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
